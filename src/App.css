@@ -1,38 +1,42 @@
-.App {
-  text-align: center;
+html, body {
+    margin: 0;
+    padding: 0;
 }
+/* the background color for the whole container and its border*/
+.my_event {
+    background-color: #00AA00;
+    overflow: hidden;
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* disabling the default color for the select menu */
+.dhx_cal_select_menu.my_event div {
+    border: 0;
+    background-color: transparent;
+    color: black;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.dhx_cal_event.my_event {
+    width: 50px;
 }
-
-.App-link {
-  color: #61dafb;
+/* styles for the event content */
+.dhx_cal_event.my_event .my_event_body {
+    padding-top: 10px;
+    padding-left: 5px;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* event's date information */
+.my_event .event_date {
+    font-weight: bold;
+    padding-right: 5px;
+}
+/* event's resizing section */
+.my_event_resize {
+    height: 3px;
+    position: absolute;
+    bottom: -1px;
+}
+/* event's move section */
+.my_event_move {
+    position: absolute;
+    top: 0;
+    height: 10px;
+    cursor: pointer;
 }

@@ -1,24 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import Scheduler from "./components/Scheduler"
+import './App.css'
+
+
+const data = [
+    { start_date:'2023-06-13 6:00', end_date:'2023-06-13 8:00', text:'Event 1', id: 1},
+    { start_date:'2023-06-14 10:00', end_date:'2023-06-14 18:00', text:'Event 2', id: 2 },
+    { start_date:'2023-06-14 10:00', end_date:'2023-06-14 18:00', text:'Event 3', id: 3 },
+];
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+        <div className='dhx_cal_container' style={{width: '100%', height: '800px'}}>
+            <Scheduler events={data}/>
+        </div>
+    </>
   );
 }
 
