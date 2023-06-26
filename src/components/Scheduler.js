@@ -1,6 +1,6 @@
-import React, {Component} from 'react'
 import 'dhtmlx-scheduler'
 import 'dhtmlx-scheduler/codebase/dhtmlxscheduler_material.css'
+import { Component } from 'react'
 
 
 const scheduler = window.scheduler
@@ -17,22 +17,20 @@ export default class Scheduler extends Component {
             "next"
         ]
         const { events } = this.props
-        scheduler.templates.event_class = function(start, end, event) {
-            return "my_event"
-        }
-
         scheduler.renderEvent = function(container, ev) {
-            const container_width = `${container.style.width.replace('px', '') - 20}px`
-            console.log(container_width)
-            container.style.with = container_width
+            const BODY_TOP_MARGIN = 19
+            const CONTAINER_LEFT_MARGIN = 20
+            const bodyHeigth = `${container.style.height.replace('px', '') - BODY_TOP_MARGIN}px`;
+            const containerWidth = `${container.style.width.replace('px', '') - CONTAINER_LEFT_MARGIN}px`;
+
+            container.style.width = containerWidth;
+            container.style.marginLeft = `${CONTAINER_LEFT_MARGIN}px`;
+            
             container.innerHTML = `
-            <div class='dhx_event_move my_event_move' style='width: ${container_width}'></div>
-            <div class='my_event_body'>
-                <span class='event_date'>
-                    ${scheduler.templates.event_header(ev.start_date, ev.end_date, ev)}
-                </span><br/>
-                <span>${scheduler.templates.event_text(ev.start_date,ev.end_date,ev)}</span></div>
-            <div class='dhx_event_resize my_event_resize' style='width: ${container_width}'></div>`
+            <div class="dhx_event_move dhx_header" style=" width:${containerWidth};">&nbsp;</div>
+            <div class="dhx_event_move dhx_title" style="">${scheduler.templates.event_header(ev.start_date, ev.end_date, ev)}</div>
+            <div class="dhx_body" style=" width:${containerWidth}; height:${bodyHeigth};">${scheduler.templates.event_text(ev.start_date,ev.end_date,ev)}</div>
+            <div class="dhx_event_resize dhx_footer" style=" width:${containerWidth};"></div>`
             return true
         }
         scheduler.init(this.schedulerContainer, new Date(), "week")
