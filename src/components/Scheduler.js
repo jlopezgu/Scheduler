@@ -17,6 +17,7 @@ export default class Scheduler extends Component {
             "next"
         ]
         const { events } = this.props
+
         scheduler.renderEvent = function(container, ev) {
             const BODY_TOP_MARGIN = 19
             const CONTAINER_LEFT_MARGIN = 20
@@ -36,6 +37,14 @@ export default class Scheduler extends Component {
         scheduler.init(this.schedulerContainer, new Date(), "week")
         scheduler.clearAll()
         scheduler.parse(events)
+    }
+
+    shouldComponentUpdate(nextProps){
+        return this.props.timeFormatState !== nextProps.timeFormatState;
+    }
+
+    componentDidUpdate() {
+        scheduler.render();
     }
 
     render() {

@@ -11,7 +11,7 @@ const data = [
 function App() {
   return (
     <>
-        <div className='dhx_cal_container' style={{width: '100%', height: '800px'}}>
+        <div className='dhx_cal_container' style={{width: '100%', height: '100%', position: 'absolute'}}>
             <Scheduler events={data}/>
         </div>
     </>
